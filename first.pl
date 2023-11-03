@@ -33,7 +33,7 @@ smelting(copper_ore, copper_plate). % получение медной плиты
 smelting(iron_ore, iron_plate). % получение железной плиты
 smelting(stone, stone_brick). % получение кирпича
 % перечисление крафтов
-% первый аргумент предиката - ингредиент для крафт, второй аргумент - получаемый предмет
+% первый аргумент предиката - ингредиент для крафта, второй аргумент - получаемый предмет
 ingredient(copper_plate, copper_cable). % крафт медной плиты
 ingredient(wood, wooden_chest). % крафт деревянного ящика
 ingredient(iron_plate, iron_chest). % крафт железного ящика
@@ -74,7 +74,7 @@ starting_craft_item(X).
 studied_craft_item(X).
 craftable_item(X).
 unstadied_craft_item(X).
-% предметы для крафта которых ингредиенты крафтятся из железной плиты
+% предметы ингредиенты которых крафтятся из железной плиты
 ingredient(iron_plate, X), ingredient(X, Y).
 % предметы крафт которых доступен со старта и которые можно использовать как топливо
 starting_craft_item(X), fuel(X).
