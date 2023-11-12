@@ -47,7 +47,7 @@ ingredient(copper_cable, electronic_circuit).
 ingredient(iron_plate, electronic_circuit).
 % крафт научного пака атоматизации (красной колбы)
 ingredient(iron_gear_wheel, automation_science_pack).
-ingredient(coper_plate, automation_science_pack).
+ingredient(copper_plate, automation_science_pack).
 % крафты для которых требуется изучение технологий
 ingredient(stone_brick, wall). % крафт стены
 ingredient(iron_plate, gun_turret). % крафт турели
