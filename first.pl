@@ -14,6 +14,7 @@ fuel(coal). % уголь
 fuel(X) :- ingredient(wood, X). % предметы которые сделаны из дерева можно использовать как топливо
 
 % перечисление всех предметов которые могут быть получены
+item(wood).
 item(copper_plate).
 item(iron_plate).
 item(stone_brick).
@@ -53,16 +54,18 @@ ingredient(stone_brick, wall). % крафт стены
 ingredient(iron_plate, gun_turret). % крафт турели
 
 % технологии
-technology(wall, wall_technology). % технология которая нужна для крафта стены
-technology(gun_turret, turrets_technology). % технология которая нужна для крафта турели
-% изученые технологии
-studied(turrets_technology).
+technology(wall_technology).
+technology(turrets_technology).
+technology_relation(wall, wall_technology). % технология которая нужна для крафта стены
+technology_relation(gun_turret, turrets_technology). % технология которая нужна для крафта турели
+% изученные технологии
+studied(wall_technology).
 
 % правила
-starting_craft_item(X) :- item(X), \+ technology(X, _). % рецепты которые доступны сразу без изучения технологий
-studied_craft_item(X) :- technology(X, Y), studied(Y). % рецепты которые стали доступны после изучения технологий
+starting_craft_item(X) :- item(X), \+ technology_relation(X, _). % рецепты которые доступны сразу без изучения технологий
+studied_craft_item(X) :- technology_relation(X, Y), studied(Y). % рецепты которые стали доступны после изучения технологий
 craftable_item(X) :- starting_craft_item(X) ; studied_craft_item(X). % все доступные для крафта рецепты
-unstadied_craft_item(X) :- technology(X, Y), \+ studied(Y). % рецепты технологии которых ещё не изучены
+unstadied_craft_item(X) :- technology_relation(X, Y), \+ studied(Y). % рецепты технологии которых ещё не изучены
 
 /* запросы к базе знаний
 % предметы для крафта которых используется шестерня
